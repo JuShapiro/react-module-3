@@ -94,7 +94,7 @@ const LangSwitcher = ({ value, onSelect }) => {
       <select
         id={selectId}
         value={value}
-        onChange={(evt) => onSelect(evt.target.ariaValueText)}
+        onChange={(evt) => onSelect(evt.target.value)}
       >
         <option value="uk">Ukrainian</option>
         <option value="en">English</option>
@@ -107,10 +107,10 @@ const LangSwitcher = ({ value, onSelect }) => {
 const App = () => {
   const [lang, setLang] = useState("uk");
   return (
-    <div>
+    <>
       <p>Selected language: {lang}</p>
       <LangSwitcher value={lang} onSelect={setLang} />
-    </div>
+    </>
   );
 };
 
