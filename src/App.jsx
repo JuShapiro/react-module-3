@@ -1,7 +1,6 @@
 import "modern-normalize";
-// import { useState } from "react";
-import "./App.css";
 import { useState } from "react";
+import "./App.css";
 
 // const LoginForm = ({ onLogin }) => {
 //   const loginId = useId();
@@ -165,29 +164,74 @@ import { useState } from "react";
 
 // export default App;
 
-const App = () => {
-  const [hasAccepted, setHasAccepted] = useState(false);
+// const App = () => {
+//   const [hasAccepted, setHasAccepted] = useState(false);
+
+//   const handleChange = (evt) => {
+//     setHasAccepted(evt.target.checked);
+//   };
+
+//   return (
+//     <div>
+//       <label>
+//         <input
+//           type="checkbox"
+//           name="terms"
+//           checked={hasAccepted}
+//           onChange={handleChange}
+//         />
+//         I accept terms and conditions
+//       </label>
+//       <button type="button" disabled={!hasAccepted}>
+//         Proceed
+//       </button>
+//     </div>
+//   );
+// };
+
+// export default App;
+
+const LoginForm = () => {
+  const [values, setValues] = useState({
+    login: "",
+    password: "",
+  });
 
   const handleChange = (evt) => {
-    setHasAccepted(evt.target.checked);
+    setValues({
+      ...values,
+      [evt.target.name]: evt.target.value,
+    });
+  };
+
+  const handleSubmit = (evt) => {
+    evt.preventDefault();
+
+    console.log(values);
+
+    setValues({
+      login: "",
+      password: "",
+    });
   };
 
   return (
-    <div>
-      <label>
-        <input
-          type="checkbox"
-          name="terms"
-          checked={hasAccepted}
-          onChange={handleChange}
-        />
-        I accept terms and conditions
-      </label>
-      <button type="button" disabled={!hasAccepted}>
-        Proceed
-      </button>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="login"
+        value={values.login}
+        onChange={handleChange}
+      />
+      <input
+        type="password"
+        name="password"
+        value={values.password}
+        onChange={handleChange}
+      />
+      <button type="submit">Login</button>
+    </form>
   );
 };
 
-export default App;
+export default LoginForm;
