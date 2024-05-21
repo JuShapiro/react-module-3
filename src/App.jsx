@@ -1,5 +1,5 @@
 import "modern-normalize";
-import { useId, useState } from "react";
+import { useState } from "react";
 import "./App.css";
 
 // const LoginForm = ({ onLogin }) => {
@@ -85,31 +85,79 @@ import "./App.css";
 
 // export default LangSwitcher;
 
-const LangSwitcher = ({ value, onSelect }) => {
-  const selectId = useId();
+// const LangSwitcher = ({ value, onSelect }) => {
+//   const selectId = useId();
 
-  return (
-    <div>
-      <label htmlFor={selectId}>Choose language</label>
-      <select
-        id={selectId}
-        value={value}
-        onChange={(evt) => onSelect(evt.target.value)}
-      >
-        <option value="uk">Ukrainian</option>
-        <option value="en">English</option>
-        <option value="pl">Polish</option>
-      </select>
-    </div>
-  );
-};
+//   return (
+//     <div>
+//       <label htmlFor={selectId}>Choose language</label>
+//       <select
+//         id={selectId}
+//         value={value}
+//         onChange={(evt) => onSelect(evt.target.value)}
+//       >
+//         <option value="uk">Ukrainian</option>
+//         <option value="en">English</option>
+//         <option value="pl">Polish</option>
+//       </select>
+//     </div>
+//   );
+// };
+
+// const App = () => {
+//   const [lang, setLang] = useState("uk");
+//   return (
+//     <>
+//       <p>Selected language: {lang}</p>
+//       <LangSwitcher value={lang} onSelect={setLang} />
+//     </>
+//   );
+// };
+
+// export default App;
 
 const App = () => {
-  const [lang, setLang] = useState("uk");
+  const [coffeeSize, setCoffeeSize] = useState("sm");
+
+  const handleSizeChange = (evt) => {
+    setCoffeeSize(evt.target.value);
+  };
   return (
     <>
-      <p>Selected language: {lang}</p>
-      <LangSwitcher value={lang} onSelect={setLang} />
+      <h1>Select coffee size</h1>
+      <label>
+        <input
+          type="radio"
+          name="coffeeSize"
+          value="sm"
+          checked={coffeeSize === "sm"}
+          onChange={handleSizeChange}
+        />
+        Small
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="coffeeSize"
+          value="md"
+          checked={coffeeSize === "md"}
+          onChange={handleSizeChange}
+        />
+        Medium
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="coffeeSize"
+          value="lg"
+          checked={coffeeSize === "lg"}
+          onChange={handleSizeChange}
+        />
+        Large
+      </label>
+      <p>
+        <b>Selected size: {coffeeSize}</b>
+      </p>
     </>
   );
 };
