@@ -1,6 +1,7 @@
 import "modern-normalize";
-import { useState } from "react";
 import "./App.css";
+
+import FeedbackForm from "./FeedbackForm/FeedbackForm";
 
 // const LoginForm = ({ onLogin }) => {
 //   const loginId = useId();
@@ -191,47 +192,53 @@ import "./App.css";
 
 // export default App;
 
-const LoginForm = () => {
-  const [values, setValues] = useState({
-    login: "",
-    password: "",
-  });
+// const LoginForm = () => {
+//   const [values, setValues] = useState({
+//     login: "",
+//     password: "",
+//   });
 
-  const handleChange = (evt) => {
-    setValues({
-      ...values,
-      [evt.target.name]: evt.target.value,
-    });
-  };
+//   const handleChange = (evt) => {
+//     setValues({
+//       ...values,
+//       [evt.target.name]: evt.target.value,
+//     });
+//   };
 
-  const handleSubmit = (evt) => {
-    evt.preventDefault();
+//   const handleSubmit = (evt) => {
+//     evt.preventDefault();
 
-    console.log(values);
+//     console.log(values);
 
-    setValues({
-      login: "",
-      password: "",
-    });
-  };
+//     setValues({
+//       login: "",
+//       password: "",
+//     });
+//   };
 
-  return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="login"
-        value={values.login}
-        onChange={handleChange}
-      />
-      <input
-        type="password"
-        name="password"
-        value={values.password}
-        onChange={handleChange}
-      />
-      <button type="submit">Login</button>
-    </form>
-  );
+//   return (
+//     <form onSubmit={handleSubmit}>
+//       <input
+//         type="text"
+//         name="login"
+//         value={values.login}
+//         onChange={handleChange}
+//       />
+//       <input
+//         type="password"
+//         name="password"
+//         value={values.password}
+//         onChange={handleChange}
+//       />
+//       <button type="submit">Login</button>
+//     </form>
+//   );
+// };
+
+// export default LoginForm;
+
+const App = () => {
+  return <FeedbackForm />;
 };
 
-export default LoginForm;
+export default App;
